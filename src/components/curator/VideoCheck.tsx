@@ -114,6 +114,7 @@ const VideoCheck = ({ saveDescriptionResult, getVideoDetail, curator: { videos, 
                     <option value="A">A</option>
                     <option value="B">B</option>
                     <option value="Toxic">Toxic Content</option>
+                    <option value="Error">ERROR</option>
                   </select>
                 </div>
                 <div className="form-group">

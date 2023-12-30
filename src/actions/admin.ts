@@ -40,6 +40,7 @@ import {
   YPP_NFT,
   YPP_NFT_CHECK,
   YPP_NFT_N_CHECK,
+  ENTITY_NO
 } from './types';
 
 export const getVideoListRange = (start: string,end:string ) => async (dispatch: Dispatch) => {
@@ -231,6 +232,11 @@ export const setFilter = (filter: any) => async (dispatch: Dispatch) => {
         });
         break;
 
+        case 'G':
+        dispatch({
+          type: ENTITY_NO,
+        });
+        break;
       default:
         dispatch({
           type: NEVER_FILTER,

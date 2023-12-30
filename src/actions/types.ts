@@ -64,6 +64,7 @@ export const N_YPP_NFT_CHECK = 'N_YPP_NFT_CHECK';
 export const N_YPP_NFT_N_CHECK = 'N_YPP_NFT_N_CHECK';
 export const N_YPP_N_NFT_CHECK = 'N_YPP_N_NFT_CHECK';
 export const N_YPP_N_NFT_N_CHECK = 'N_YPP_N_NFT_N_CHECK';
+export const ENTITY_NO = 'ENTITY_NO';
 
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
