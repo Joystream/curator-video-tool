@@ -3,7 +3,7 @@ import React from 'react';
 
 const client = new ApolloClient({
   // uri: import.meta.env.VITE_QN_URL,
-  uri: "https://query.joystream.org/graphql",
+  uri: 'https://query.joystream.org/graphql',
   cache: new InMemoryCache(),
   connectToDevTools: true,
   defaultOptions: {

@@ -8,8 +8,8 @@ import { API_URL } from '@/config';
 const api = axios.create({
   baseURL: API_URL,
   headers: {
-    'Content-Type': 'application/json'
-  }
+    'Content-Type': 'application/json',
+  },
 });
 /*
   NOTE: intercept any error responses from the api

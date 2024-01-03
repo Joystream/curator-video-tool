@@ -8,8 +8,8 @@ import setAuthToken from './SetToken';
 const api = axios.create({
   baseURL: API_URL,
   headers: {
-    'Content-Type': 'application/json'
-  }
+    'Content-Type': 'application/json',
+  },
 });
 /*
   NOTE: intercept any error responses from the api
@@ -24,7 +24,7 @@ api.interceptors.response.use(
   (err) => {
     if (err.response.status === 401) {
       // store.dispatch({ type: LOGOUT });
-      const token= null
+      const token = null;
       setAuthToken(token);
     }
 

@@ -1,6 +1,6 @@
 import { Button, Divider, Form, Popconfirm, Select, Table, Tag, Typography } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import { Fragment,useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -62,14 +62,14 @@ const EditableCell: React.FC<EditableCellProps> = ({
   );
 };
 
-const CuratorItem = ({ result,setAuthority,delCurator }: any) => {
+const CuratorItem = ({ result, setAuthority, delCurator }: any) => {
   const [page, setPage] = useState(1);
   const [form] = Form.useForm();
   const [data, setData] = useState(result);
   const [editingKey, setEditingKey] = useState<any>('');
-  
-// console.log(result,"result")
-// console.log(data,"data")
+
+  // console.log(result,"result")
+  // console.log(data,"data")
   const isEditing = (record: CuratorType) => record.email === editingKey;
 
   const edit = (record: Partial<CuratorType> & { key: React.Key }) => {
@@ -88,7 +88,7 @@ const CuratorItem = ({ result,setAuthority,delCurator }: any) => {
 
       const newData = data;
 
-      const index = newData.findIndex((item:any) => key === item.email);
+      const index = newData.findIndex((item: any) => key === item.email);
       // console.log(index, "index")
       if (index > -1) {
         const item = newData[index];
@@ -110,9 +110,7 @@ const CuratorItem = ({ result,setAuthority,delCurator }: any) => {
     }
   };
 
-
   const [paginationSize, setPaginationSize] = useState(10);
-
 
   const columns = [
     {
@@ -138,7 +136,7 @@ const CuratorItem = ({ result,setAuthority,delCurator }: any) => {
     {
       title: 'Delete',
       dataIndex: 'Delete',
-      render: (_:any, record: { email: string }) =>
+      render: (_: any, record: { email: string }) =>
         result.length >= 1 ? (
           <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.email)}>
             <Button danger>Delete</Button>
@@ -188,7 +186,6 @@ const CuratorItem = ({ result,setAuthority,delCurator }: any) => {
   });
   return (
     <Fragment>
-      
       <Form form={form} component={false}>
         <Table
           components={{
@@ -212,7 +209,7 @@ const CuratorItem = ({ result,setAuthority,delCurator }: any) => {
           dataSource={result}
         />
       </Form>
-      </Fragment>
+    </Fragment>
   );
 };
 
@@ -220,6 +217,6 @@ const mapStateToProps = (state: any) => ({
   curator: state.curator,
 });
 
-const connector = connect(mapStateToProps, {setAuthority, delCurator });
+const connector = connect(mapStateToProps, { setAuthority, delCurator });
 
 export default connector(CuratorItem);

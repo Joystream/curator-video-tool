@@ -21,11 +21,11 @@ const Alert: React.FC<AlertProps> = ({ alerts }) => (
 );
 
 Alert.propTypes = {
-  alerts: PropTypes.array.isRequired
+  alerts: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = (state:any) => ({
-  alerts: state.alert
+const mapStateToProps = (state: any) => ({
+  alerts: state.alert,
 });
 
 export default connect(mapStateToProps)(Alert);

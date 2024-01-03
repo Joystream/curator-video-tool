@@ -1,6 +1,6 @@
 import { DownloadOutlined } from '@ant-design/icons';
-import type { DatePickerProps , RadioChangeEvent } from 'antd';
-import { Button, Checkbox, Col, DatePicker, Divider, Radio, Row, Select, Space,Switch, Table, Tag } from 'antd';
+import type { DatePickerProps, RadioChangeEvent } from 'antd';
+import { Button, Checkbox, Col, DatePicker, Divider, Radio, Row, Select, Space, Switch, Table, Tag } from 'antd';
 import type { CheckboxValueType } from 'antd/es/checkbox/Group';
 import type { RangePickerProps } from 'antd/es/date-picker';
 import type { ColumnsType } from 'antd/es/table';
@@ -13,7 +13,14 @@ import { Link } from 'react-router-dom';
 
 import { useVideoCounts, useVideos } from '@/hooks';
 
-import { getCuratorList, getVideoLatest,getVideoListRange, sendVideoList, setDate, setFilter } from '../../actions/admin';
+import {
+  getCuratorList,
+  getVideoLatest,
+  getVideoListRange,
+  sendVideoList,
+  setDate,
+  setFilter,
+} from '../../actions/admin';
 import Spinner from '../../components/layout/Spinner';
 
 const { RangePicker } = DatePicker;
@@ -133,15 +140,13 @@ const VideoList = ({
       title: 'TOXIC CONTENT',
       dataIndex: 'video_check_tag',
       render: (_, { video_check_tag, video_check_flag }) =>
-        video_check_tag!='' && null? (
+        video_check_tag != '' && null ? (
           <Tag color="volcano" key={video_check_tag}>
             {video_check_tag}
           </Tag>
         ) : video_check_flag ? (
           <Tag color="green">checked</Tag>
-        ) : (
-          null
-        ),
+        ) : null,
     },
     {
       title: 'DUPLICATE',
@@ -156,14 +161,13 @@ const VideoList = ({
     {
       title: 'COMMENT',
       dataIndex: 'video_check_comment1',
-      render: (_, { video_check_description, video_check_comment, video_check_comment1 }) =>{
-        if(video_check_comment){
-          video_check_comment1 = video_check_description.concat(" ", video_check_comment)
-          return video_check_comment1
+      render: (_, { video_check_description, video_check_comment, video_check_comment1 }) => {
+        if (video_check_comment) {
+          video_check_comment1 = video_check_description.concat(' ', video_check_comment);
+          return video_check_comment1;
         }
-        return video_check_description
-      }
-     
+        return video_check_description;
+      },
     },
   ];
 
@@ -256,7 +260,7 @@ const VideoList = ({
 
   let table: any = '';
   if (!videos.length) {
-    table = (<Spinner/>)
+    table = <Spinner />;
   } else {
     table = (
       <Table
@@ -271,8 +275,7 @@ const VideoList = ({
           defaultPageSize: 10,
           hideOnSinglePage: true,
           showSizeChanger: true,
-          position: ['topRight', 'bottomRight']
-
+          position: ['topRight', 'bottomRight'],
         }}
         rowSelection={rowSelection}
         scroll={{ x: 1700 }}
@@ -425,6 +428,13 @@ const mapStateToProps = (state: any) => ({
   auth: state.auth,
 });
 
-const connector = connect(mapStateToProps, { getVideoListRange, sendVideoList, getCuratorList, setDate, setFilter, getVideoLatest });
+const connector = connect(mapStateToProps, {
+  getVideoListRange,
+  sendVideoList,
+  getCuratorList,
+  setDate,
+  setFilter,
+  getVideoLatest,
+});
 
 export default connector(VideoList);

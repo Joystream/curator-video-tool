@@ -1,6 +1,6 @@
-import './App.css'
+import './App.css';
 
-import {useEffect} from 'react'
+import { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -35,7 +35,7 @@ const App = () => {
   return (
     <div className="App">
       <Provider store={store}>
-        <Router basename='/'>
+        <Router basename="/">
           <Navbar />
           <Routes>
             <Route path="/" element={<Login />} />
@@ -53,6 +53,6 @@ const App = () => {
       </Provider>
     </div>
   );
-}
+};
 
 export default App;

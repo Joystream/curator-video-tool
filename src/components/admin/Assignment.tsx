@@ -1,15 +1,14 @@
 import type { DatePickerProps } from 'antd';
-import { DatePicker,Divider, Select, Table,Tag } from 'antd';
+import { DatePicker, Divider, Select, Table, Tag } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import type { TableRowSelection } from 'antd/es/table/interface';
 import axios from 'axios';
 import dayjs from 'dayjs';
-import React, { Fragment,useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 
 import { API_URL } from '@/config';
 
 import Spinner from '../../components/layout/Spinner';
-
 
 interface Assignment {
   key: string;
@@ -23,7 +22,6 @@ interface Assignment {
   video_check_tag: string[];
   video_check_flag: boolean;
   video_check_description: string;
-
 }
 
 interface CuratorList {
@@ -98,7 +96,6 @@ const columns: ColumnsType<Assignment> = [
       </>
     ),
   },
-
 ];
 
 const today = new Date();
@@ -126,7 +123,7 @@ const Assignment = () => {
     setDate(dateString);
   };
 
-  async function getUnCheckedList(date:string) {
+  async function getUnCheckedList(date: string) {
     try {
       const response = await axios.get(`${API_URL}/leader/assignment/${date}`, {
         headers: {
@@ -159,7 +156,7 @@ const Assignment = () => {
     setCurator(value);
   };
 
-  const onSelectChange = (newSelectedRowKeys: React.Key[],selectedRows: Assignment[]) => {
+  const onSelectChange = (newSelectedRowKeys: React.Key[], selectedRows: Assignment[]) => {
     setSelectedRowKeys(newSelectedRowKeys);
     setSelectList(selectedRows);
   };
@@ -204,7 +201,7 @@ const Assignment = () => {
 
   const onSubmit = (e: any) => {
     e.preventDefault();
-    if (selectList !== undefined && curator !== undefined && selectList.length > 0 && curator){
+    if (selectList !== undefined && curator !== undefined && selectList.length > 0 && curator) {
       setMsg(true);
       sendVideoList(selectList, curator);
     }
@@ -225,23 +222,18 @@ const Assignment = () => {
     }
   }
 
-
   return (
     <section className="container">
       <h1 className="large text-primary">Assignment</h1>
       <DatePicker onChange={onDatePickerChange} defaultValue={dayjs()} />
-      {assignment == undefined  ? (
+      {assignment == undefined ? (
         <Spinner />
       ) : (
         <Fragment>
           <form className="form" onSubmit={onSubmit}>
             <Divider />
 
-            <Table
-              rowSelection={rowSelection}
-              columns={columns}
-              dataSource={assignment}
-            />
+            <Table rowSelection={rowSelection} columns={columns} dataSource={assignment} />
 
             <Select
               placeholder="Select a person"

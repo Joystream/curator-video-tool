@@ -1,6 +1,5 @@
-
-query GetVideos ($where:VideoWhereInput, $limit:Int){
-  videos(orderBy: createdAt_DESC, where: $where, limit:$limit) {
+query GetVideos($where: VideoWhereInput, $limit: Int) {
+  videos(orderBy: createdAt_DESC, where: $where, limit: $limit) {
     createdAt
     description
     duration

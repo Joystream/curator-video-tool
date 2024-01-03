@@ -4,11 +4,11 @@ import { Dispatch } from 'redux';
 import api from '../utils/api';
 import {
   GET_CURATOR_VIDEOS,
-  GET_VIDEO_DETAIL
+  GET_VIDEO_DETAIL,
   // AUTHORITY_SET,
 } from './types';
 
-export const saveDescriptionResult = (value: any, id: any)  => async (dispatch: Dispatch) => {
+export const saveDescriptionResult = (value: any, id: any) => async (dispatch: Dispatch) => {
   try {
     const data = value;
     data.video_id = id;
@@ -32,16 +32,15 @@ export const getVideoDetail = (video_id: string | undefined) => async (dispatch:
       },
     });
     dispatch({
-      type:GET_VIDEO_DETAIL,
-      payload: res.data
-    })
+      type: GET_VIDEO_DETAIL,
+      payload: res.data,
+    });
 
     // Do something with the user data
   } catch (error) {
     console.log(error, 'Fetch UnCheckedList Error');
   }
-}
-
+};
 
 export const getUnCheckedList = (member_id: string) => async (dispatch: Dispatch) => {
   try {

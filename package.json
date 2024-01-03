@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "lint": "eslint \"./src/**/*.{ts,tsx}\"",
     "lint:fix": "yarn lint --fix",
-    "format": "prettier \"./src/**/*.{ts,tsx,gql}\" --check",
+    "format": "prettier \"./src/**/*.{ts,tsx,gql,css}\" --check",
     "format:check": "yarn format --check",
     "format:write": "yarn format --write",
     "test": "echo \"Error: no test specified\" && exit 1"

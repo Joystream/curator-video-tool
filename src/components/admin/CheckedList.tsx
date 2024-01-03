@@ -1,19 +1,18 @@
 import { Divider, Table, Tag } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import {useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import api from '../../utils/api'
+import api from '../../utils/api';
 
 interface VideoDetail {
-
   key: string;
   video_title: string;
   video_link: string;
   video_owner_handle: string;
   video_curator: string;
   video_check_description: string;
-  video_check_tag:string[]|undefined;
-  video_check_flag:boolean
+  video_check_tag: string[] | undefined;
+  video_check_flag: boolean;
 }
 
 const columns: ColumnsType<VideoDetail> = [
@@ -48,27 +47,30 @@ const columns: ColumnsType<VideoDetail> = [
   {
     title: 'video_check_tag',
     dataIndex: 'video_check_tag',
-    render: (_, { video_check_tag,video_check_flag }) => (
+    render: (_, { video_check_tag, video_check_flag }) => (
       <>
         {video_check_tag &&
           video_check_tag.map((tag) => {
-            if(tag[0]!='')
-            return (
-              <Tag color="red" key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-        {video_check_flag&& <Tag color="green" key='checked'> CHECKED</Tag>}
+            if (tag[0] != '')
+              return (
+                <Tag color="red" key={tag}>
+                  {tag.toUpperCase()}
+                </Tag>
+              );
+          })}
+        {video_check_flag && (
+          <Tag color="green" key="checked">
+            {' '}
+            CHECKED
+          </Tag>
+        )}
       </>
     ),
   },
-  
 ];
 
-const CheckedList=()=> {
-
-  const [checkedList, setCheckedList] = useState<VideoDetail[]>()
+const CheckedList = () => {
+  const [checkedList, setCheckedList] = useState<VideoDetail[]>();
 
   useEffect(() => {
     getCheckedList();
@@ -89,24 +91,14 @@ const CheckedList=()=> {
     }
   }
 
-
   return (
     <section className="container">
       <h1 className="large text-primary">Checked List</h1>
       <Divider />
-      
-      <Table
-        
-        columns={columns}
-        dataSource={checkedList}
-      />
+
+      <Table columns={columns} dataSource={checkedList} />
     </section>
-  )
-}
+  );
+};
 
-export default CheckedList
-
-
-
-
-
+export default CheckedList;

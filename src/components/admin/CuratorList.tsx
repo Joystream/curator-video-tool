@@ -12,24 +12,20 @@ import CuratorItem from './CuratorItem';
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-
-
 const CuratorList = ({ getMemberList, curator: { curators } }: any) => {
-
   useEffect(() => {
     getMemberList();
   }, [getMemberList]);
 
-  let curatorlist:any=''
-  if(curators.length==0){
-   curatorlist = (<Spinner/>)
-  }
-  else{
+  let curatorlist: any = '';
+  if (curators.length == 0) {
+    curatorlist = <Spinner />;
+  } else {
     // console.log(curators, "curators")
-    curatorlist = (<CuratorItem result = {curators}></CuratorItem>)
+    curatorlist = <CuratorItem result={curators}></CuratorItem>;
   }
 
-    return (
+  return (
     <section className="container">
       <h1 className="large text-primary">Curators List</h1>
 

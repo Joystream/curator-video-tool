@@ -1,15 +1,8 @@
-import {Navigate} from 'react-router-dom'
+import { Navigate } from 'react-router-dom';
 import { Dispatch } from 'redux';
 
 import api from '../utils/api';
-import {
-  AUTH_ERROR,
-  LOGIN_FAIL,
-  LOGIN_SUCCESS,
-  LOGOUT,
-  REGISTER_FAIL,
-  REGISTER_SUCCESS,
-  USER_LOADED} from './types';
+import { AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, REGISTER_FAIL, REGISTER_SUCCESS, USER_LOADED } from './types';
 
 /*
   NOTE: we don't need a config object for axios as the
@@ -25,40 +18,40 @@ export const loadUser = () => async (dispatch: Dispatch) => {
 
     dispatch({
       type: USER_LOADED,
-      payload: res.data
+      payload: res.data,
     });
   } catch (err) {
     dispatch({
-      type: AUTH_ERROR
+      type: AUTH_ERROR,
     });
   }
 };
 
 // Register User
-export const register = (formData:any) => async (dispatch: Dispatch) => {
+export const register = (formData: any) => async (dispatch: Dispatch) => {
   try {
     const res = await api.post('/members', formData);
 
     dispatch({
       type: REGISTER_SUCCESS,
-      payload: res.data
+      payload: res.data,
     });
     // dispatch(loadUser() as any);
-  } catch (err:any) {
+  } catch (err: any) {
     const errors = err.response.data.errors;
 
     if (errors) {
-      console.log(errors, "Register Action Error")
+      console.log(errors, 'Register Action Error');
     }
 
     dispatch({
-      type: REGISTER_FAIL
+      type: REGISTER_FAIL,
     });
   }
 };
 
 // Login User
-export const login = (email:string, password:string) => async (dispatch: Dispatch) => {
+export const login = (email: string, password: string) => async (dispatch: Dispatch) => {
   const body = { email, password };
 
   try {
@@ -66,20 +59,20 @@ export const login = (email:string, password:string) => async (dispatch: Dispatc
 
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: res.data
+      payload: res.data,
     });
 
     dispatch(loadUser() as any);
-  } catch (err:any) {
+  } catch (err: any) {
     const errors = err.response.data.errors;
 
     // if (errors) {
-      console.log(errors, "auth Action Error")
+    console.log(errors, 'auth Action Error');
     // }
 
     dispatch({
       type: LOGIN_FAIL,
-      payload: errors
+      payload: errors,
     });
   }
 };

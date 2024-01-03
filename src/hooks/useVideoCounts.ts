@@ -3,21 +3,20 @@ import { useEffect, useMemo } from 'react';
 
 import { useGetVideoCountLazyQuery } from '@/queries';
 
-export function useVideoCounts(start_date:any, end_date:any) {
-
-  const createdAt =  moment.utc(start_date).toDate();
+export function useVideoCounts(start_date: any, end_date: any) {
+  const createdAt = moment.utc(start_date).toDate();
   const endedAt = moment.utc(end_date).toDate();
 
   const variables = {
     where: { createdAt_gt: createdAt, createdAt_lt: endedAt },
   };
-  const [getCount, getCountQuery]= useGetVideoCountLazyQuery({variables});
+  const [getCount, getCountQuery] = useGetVideoCountLazyQuery({ variables });
 
   useEffect(() => {
-    if (!start_date||!end_date) return;
-    getCount({variables})
-  }, [start_date,end_date]);
-  
+    if (!start_date || !end_date) return;
+    getCount({ variables });
+  }, [start_date, end_date]);
+
   const data = useMemo(() => getCountQuery.data?.videosConnection.totalCount, [getCountQuery.data]);
 
   // console.log(data, "data")

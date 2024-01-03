@@ -1,20 +1,14 @@
-import {
-  ADD_CURATOR,
-  DELETE_CURATOR,
-  GET_CURATOR_VIDEOS,
-  GET_CURATORS,
-  GET_VIDEO_DETAIL,
-  } from '../actions/types';
+import { ADD_CURATOR, DELETE_CURATOR, GET_CURATOR_VIDEOS, GET_CURATORS, GET_VIDEO_DETAIL } from '../actions/types';
 
 const initialState = {
-  videos:[],
- curators:[],
+  videos: [],
+  curators: [],
   loading: true,
   error: {},
-  video:{}
+  video: {},
 };
 
-function curatorReducer(state = initialState, action:any) {
+function curatorReducer(state = initialState, action: any) {
   const { type, payload } = action;
   switch (type) {
     case GET_CURATORS:
@@ -23,34 +17,32 @@ function curatorReducer(state = initialState, action:any) {
         ...state,
         curators: payload,
         loading: false,
-        
       };
-      case GET_CURATOR_VIDEOS:
+    case GET_CURATOR_VIDEOS:
       return {
         ...state,
         videos: payload,
         // loading: false,
-        
       };
 
-      case DELETE_CURATOR:
+    case DELETE_CURATOR:
       return {
         ...state,
-        curators: state.curators.filter((curator:any) => curator.email !== payload),
-        loading: false
+        curators: state.curators.filter((curator: any) => curator.email !== payload),
+        loading: false,
       };
-    
-      case ADD_CURATOR:
+
+    case ADD_CURATOR:
       return {
         ...state,
         curators: [payload, ...state.curators],
-        loading: false
+        loading: false,
       };
-      case GET_VIDEO_DETAIL:
-        return {
-          ...state,
-          video: payload,
-          loading: false
+    case GET_VIDEO_DETAIL:
+      return {
+        ...state,
+        video: payload,
+        loading: false,
       };
 
     // case SET_LOADING:
