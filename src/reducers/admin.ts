@@ -124,7 +124,7 @@ function videoReducer(state = initialState, action: any) {
     case ENTITY_NO:
       return {
         ...state,
-        filter_data: state.videos.filter((item: any) => item.video_category == 'Error'||item.video_play == 'No'),
+        filter_data: state.videos.filter((item: any) => item.video_category == 'Error'),
         loading: false,
       };
     case YPP_NFT:
