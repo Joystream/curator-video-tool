@@ -322,7 +322,7 @@ const VideoList = ({
                 <Checkbox value="F">Non CHECKED</Checkbox>
               </Col>
               <Col span={3}>
-                <Checkbox value="G">Doesn't play</Checkbox>
+                <Checkbox value="G">Errored Videos</Checkbox>
               </Col>
             </Checkbox.Group>
           </Row>
